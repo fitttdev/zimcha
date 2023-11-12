@@ -6,7 +6,7 @@ import { UserDocument } from './models/user.schema';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly userRepository: UsersRepository) { }
+  constructor(private readonly userRepository: UsersRepository) {}
 
   async create(createUserDto: CreateUserDto): Promise<UserDocument> {
     return this.userRepository.create({
@@ -20,8 +20,14 @@ export class UsersService {
     return await this.userRepository.find({});
   }
 
+  async user(_id: string): Promise<UserDocument> {
+    return await this.userRepository.findOne({
+      _id,
+    });
+  }
+
   async verifyUser(email: string, password: string): Promise<UserDocument> {
-    const user = await this.userRepository.findOne({ email: email });
+    const user = await this.userRepository.findOne({ email });
     const passwordIsValid = await bcrypt.compare(password, user.password);
     if (!passwordIsValid) {
       throw new UnauthorizedException('Invalid Credentials');
