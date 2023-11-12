@@ -7,13 +7,19 @@ import { LoggerModule } from 'nestjs-pino';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { UsersRepository } from './users/users.repository';
-import { UserDocument } from './users/models/user.schema';
+import { UserDocument, UserSchema } from './users/models/user.schema';
 import { UsersService } from './users/users.service';
+import { DbModule } from '@app/common';
 
 @Module({
   imports: [
     UsersModule,
     LoggerModule,
+    DbModule.forFeature(
+      [
+        { name: UserDocument.name, schema: UserSchema }
+      ]
+    ),
     JwtModule.registerAsync({
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
@@ -34,6 +40,6 @@ import { UsersService } from './users/users.service';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsersService, UsersRepository, UserDocument, UsersModule],
+  providers: [AuthService, UsersService, UsersRepository],
 })
 export class AuthModule { }

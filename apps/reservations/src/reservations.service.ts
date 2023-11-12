@@ -14,7 +14,7 @@ export class ReservationsService {
       ...createReservationDto,
       timestamp: new Date(),
       userID: '122323'
-    });
+    })
   }
 
   findAll() {
