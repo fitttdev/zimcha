@@ -1,16 +1,16 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
-import { Strategy } from "passport-local";
-import { UsersService } from "../users/users.service";
-import { PassportStrategy } from "@nestjs/passport";
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Strategy } from 'passport-local';
+import { UsersService } from '../users/users.service';
+import { PassportStrategy } from '@nestjs/passport';
+import { UserDocument } from '../users/models/user.schema';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly usersService: UsersService) {
-
     super({ usernameField: 'email' });
   }
 
-  async validate(email: string, password: string) {
+  async validate(email: string, password: string): Promise<UserDocument> {
     try {
       return this.usersService.verifyUser(email, password);
     } catch (err) {

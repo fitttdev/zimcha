@@ -29,6 +29,7 @@ export class ReservationsController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
+    console.log('removing');
     return this.reservationsService.remove(id);
   }
 }
