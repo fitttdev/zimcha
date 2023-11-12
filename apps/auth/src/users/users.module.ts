@@ -8,12 +8,11 @@ import { UsersRepository } from './users.repository';
 @Module({
   imports: [
     DbModule,
-    DbModule.forFeature(
-      [{ name: UserDocument.name, schema: UserSchema }]
-    ),
+    DbModule.forFeature([{ name: UserDocument.name, schema: UserSchema }]),
    LoggerModule
   ],
   controllers: [UsersController],
-  providers: [UsersService, UsersRepository]
+  providers: [UserDocument, UsersService, UsersRepository],
+  exports: [UsersService, UsersRepository]
 })
 export class UsersModule {}

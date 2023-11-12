@@ -6,6 +6,10 @@ import { UsersModule } from './users/users.module';
 import { LoggerModule } from 'nestjs-pino';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
+import { UsersRepository } from './users/users.repository';
+import { UserDocument } from './users/models/user.schema';
+import { UsersService } from './users/users.service';
+
 @Module({
   imports: [
     UsersModule,
@@ -30,6 +34,6 @@ import * as Joi from 'joi';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, UsersService, UsersRepository, UserDocument, UsersModule],
 })
 export class AuthModule { }
