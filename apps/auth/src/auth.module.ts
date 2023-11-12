@@ -40,6 +40,6 @@ import { DbModule } from '@app/common';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsersService, UsersRepository, UserDocument, UsersModule],
+  providers: [AuthService, UsersService, UsersRepository],
 })
 export class AuthModule { }
