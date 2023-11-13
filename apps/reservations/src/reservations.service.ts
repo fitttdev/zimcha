@@ -5,16 +5,14 @@ import { ReservationsRepository } from './reservation.repository';
 
 @Injectable()
 export class ReservationsService {
-  constructor(
-    private readonly reservationRepository: ReservationsRepository
-  ) { }
+  constructor(private readonly reservationRepository: ReservationsRepository) {}
 
   create(createReservationDto: CreateReservationDto) {
     return this.reservationRepository.create({
       ...createReservationDto,
       timestamp: new Date(),
-      userID: '122323'
-    })
+      userID: '122323',
+    });
   }
 
   findAll() {
@@ -28,7 +26,7 @@ export class ReservationsService {
   update(_id: string, updateReservationDto: UpdateReservationDto) {
     return this.reservationRepository.findOneAndUpdate(
       { _id },
-      { $set: updateReservationDto }
+      { $set: updateReservationDto },
     );
   }
 
@@ -36,5 +34,3 @@ export class ReservationsService {
     return this.reservationRepository.findOneAndDelete({ _id });
   }
 }
-
-
