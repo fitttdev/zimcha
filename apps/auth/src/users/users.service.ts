@@ -5,7 +5,7 @@ import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly userRepository: UsersRepository) {}
+  constructor(private readonly userRepository: UsersRepository) { }
 
   async create(createUserDto: CreateUserDto) {
     return this.userRepository.create({
@@ -13,6 +13,10 @@ export class UsersService {
       password: await bcrypt.hash(createUserDto.password, 10),
       timestamp: new Date(),
     });
+  }
+
+  findAll() {
+    return this.userRepository.find({});
   }
 
   async verifyUser(email: string, password: string) {
