@@ -6,7 +6,7 @@ import { UserDocument } from './models/user.schema';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly userRepository: UsersRepository) { }
+  constructor(private readonly userRepository: UsersRepository) {}
 
   async create(createUserDto: CreateUserDto): Promise<UserDocument> {
     return this.userRepository.create({

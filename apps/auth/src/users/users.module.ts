@@ -9,10 +9,10 @@ import { UsersRepository } from './users.repository';
   imports: [
     DbModule,
     DbModule.forFeature([{ name: UserDocument.name, schema: UserSchema }]),
-   LoggerModule
+    LoggerModule,
   ],
   controllers: [UsersController],
   providers: [UserDocument, UsersService, UsersRepository],
-  exports: [UsersService, UsersRepository]
+  exports: [UsersService, UsersRepository],
 })
 export class UsersModule {}
