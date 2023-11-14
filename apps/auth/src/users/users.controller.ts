@@ -13,12 +13,12 @@ export class UsersController {
   }
 
   @Get()
-  users(): Promise<UserDocument[]> {
-    return this.usersService.users();
+  findAll(): Promise<UserDocument[]> {
+    return this.usersService.findAll();
   }
 
   @Get(':id')
-  user(@Param('id') id: string): Promise<UserDocument> {
-    return this.usersService.user(id);
+  findOne(@Param('id') id: string): Promise<UserDocument> {
+    return this.usersService.findOne(id);
   }
 }

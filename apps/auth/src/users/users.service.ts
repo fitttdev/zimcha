@@ -16,11 +16,11 @@ export class UsersService {
     });
   }
 
-  async users(): Promise<UserDocument[]> {
+  async findAll(): Promise<UserDocument[]> {
     return await this.userRepository.find({});
   }
 
-  async user(_id: string): Promise<UserDocument> {
+  async findOne(_id: string): Promise<UserDocument> {
     return await this.userRepository.findOne({
       _id,
     });
