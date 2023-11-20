@@ -11,7 +11,6 @@ RUN npm i --save-dev @swc/cli @swc/core
 
 RUN pnpm install
 
-
 COPY . .
 
 RUN nest start -b swc -w
@@ -33,4 +32,4 @@ RUN pnpm install --prod
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/apps/reservations/main"]
+CMD ["node", "dist/apps/auth/main"]

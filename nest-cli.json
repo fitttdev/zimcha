@@ -3,9 +3,8 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "apps/reservations/src",
   "compilerOptions": {
-    "deleteOutDir": true,
-    "webpack": true,
-    "tsConfigPath": "apps/reservations/tsconfig.app.json"
+    "builder": "swc",
+    "typeCheck": true
   },
   "projects": {
     "common": {
@@ -24,6 +23,15 @@
       "sourceRoot": "apps/reservations/src",
       "compilerOptions": {
         "tsConfigPath": "apps/reservations/tsconfig.app.json"
+      }
+    },
+    "auth": {
+      "type": "application",
+      "root": "apps/auth",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth/tsconfig.app.json"
       }
     }
   },
