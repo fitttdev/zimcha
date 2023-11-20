@@ -7,11 +7,13 @@ COPY pnpm-lock.yaml ./
 
 RUN npm install -g pnpm
 
+RUN npm i --save-dev @swc/cli @swc/core
+
 RUN pnpm install
 
 COPY . .
 
-RUN pnpm run build
+RUN nest start -b swc -w
 
 # Production
 FROM node:alpine as production 

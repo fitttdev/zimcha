@@ -3,9 +3,8 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "apps/reservations/src",
   "compilerOptions": {
-    "deleteOutDir": true,
-    "webpack": true,
-    "tsConfigPath": "apps/reservations/tsconfig.app.json"
+    "builder": "swc",
+    "typeCheck": true
   },
   "projects": {
     "common": {
